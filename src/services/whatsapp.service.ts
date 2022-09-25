@@ -54,7 +54,7 @@ export class WhatsappService {
       .on('auth_failure', () => Logger.info('Whatsapp Client authentication failed'))
       .on('ready', () => Logger.info('Whatsapp Client is Ready'))
       .on('message', (message) => {
-        this._bot.reply(message.body).then(content => {
+        this._bot.reply(message.from, message.body).then(content => {
           this._client!.sendMessage(message.from, content);
         })
       });
